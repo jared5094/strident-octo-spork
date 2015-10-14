@@ -1,0 +1,26 @@
+<h1>Post a message.</h1>
+<br><br>
+<form action="index.html.erb" method="post" id="create_message">
+  <ul>
+    <li>Username:<br>
+    <input type="text" name="Username"></li>
+    <li>Password:<br>
+    <input type="text" name="Password"></li>
+  </ul>
+  <br><br>
+  <p>Subject: <input type="text" name="Subject">
+  <br></p>
+  <p><input type="submit"><br>
+  <textarea name="message" form="create_message" rows="25" cols="200"></textarea>
+</form></p>
+<br><br><br>
+<%= form_tag("/", method: "post", :action => "post_message") do %>
+  <%= label_tag("Username") %>
+  <%= text_field_tag(@user)%>
+  <%= label_tag("Password") %>
+  <%= text_field_tag(@password)%>
+  <%= label_tag("Subject") %>
+  <%= text_field_tag( :message_form, :subject) %><br><br>
+  <%= label_tag("Message") %>     <%= submit_tag("Submit")%>
+  <%= text_area( :message_form, :message, rows: '25', cols: '250') %>
+<% end %>
